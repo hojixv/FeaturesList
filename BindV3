@@ -1,0 +1,673 @@
+--// All Fake dahood support
+--// Silent Fully Bypasses + more protection incase dahood patches
+--// Hoodcustoms support
+--// Fake Dahood Support
+--// More Protection
+
+
+-- bland 
+
+script_key="KEY";
+getgenv().script_key = script_key;
+getgenv().Intro = {
+    ["IntroBlur"] = true,
+}
+
+getgenv().Watermark = {
+    ["Enable"] = true,
+}
+
+getgenv().hojixv = {
+    Silent = {
+        ["Enabled"] = true, 
+        ["Part"] = "HumanoidRootPart", 
+        ["UseAirPart"] = false, 
+        ["AirPart"] = "Head", 
+        ["ClosestPart"] = false, 
+        ["CenterPart"] = false,
+        ["ClosetPoint"] = false,
+
+        ["WhitelistedParts"] = {"HumanoidRootPart"},
+
+        ["AutoPrediction"] = 1, -- type of math
+        ["UseAutoPrediction"] = false,
+        ["MultiplyAutoPrediction"] = false,
+        ["Multiply"] = 2, -- Multipliers
+        
+        ["UseAntiCurve"] = false,
+        ["AntiCurveValue"] = 1,
+        ["UseAxis"] = false,
+        ["AxisY"] = 1,
+        ["AxisX"] = 1,
+
+        ["AntiGroundShot"] = false,
+        ["UseAntiGroundShot"] = false,
+        ["AntiGroundShotValue"] = 5, -- Up to 10
+        
+        ["Prediction"] = 0.1267, 
+        ["HitChance"] = 100, 
+        ["UseToggleKey"] = true, 
+        ["ToggleKey"] = "p", 
+
+        ["UseCustomPrediction"] = true, 
+        ["CustomPrediction"] = {["X"] = 0.138, ["Y"] = 0.128, ["Z"] = 0.138}, 
+
+        ["UseFactors"] = false,
+        ["Factors"] = 1, -- 1, 2, 3
+        ["FactorsX"] = 1, -- X Pred Factor
+        ["FactorsY"] = 1, -- Y Pred Factor
+        ["FactorsZ"] = 1, -- Z Pred Factor
+
+        ["UseTracer"] = false,
+        ["Tracer"] = true,
+        ["TracerColor"] = Color3.fromRGB(0, 0, 255),
+        ["FreeForAllTracer"] = true, -- may cause lots of lag
+
+        ["SnapLines"] = false,  -- only works on electron
+
+        ["UseCustomAngles"] = false,
+        ["CustomAngle"] = "Pixel",
+
+        ["UseAirShotHitChance"] = false,
+        ["AirShotHitChance"] = 100,
+
+        ["KillPoint"] = "KillCheck",
+    }, 
+    Dynamic = {
+        ["LeftRange"] = 10,
+        ["RightRange"] = 10,
+        ["UniversalRange"] = 1,
+      
+        ["Y_Range"] = 1,
+        ["X_Range"] = 1,
+        ["Z_Range"] = 1,
+    },
+    CustomSilentSettings = {
+        ["Debug"] = false,
+        ["UseCustomInterVals"] = false,
+    },
+    SilentFOV = {
+        ["Visible"] = true, 
+        ["Filled"] = false, 
+        ["Radius"] = 300, 
+        ["Transparency"] = 1, 
+        ["Thickness"] = 1, 
+        ["Color"] = Color3.fromRGB(0, 0, 255),
+    },
+    Type = {
+        ["VisibleIfTarget"] = false,
+        ["FoVScaleFactors"] = false,
+    },
+    SilentChecks = {
+        ["VisibleCheck"] = false,
+        ["CrewCheck"] = false, 
+        ["FriendCheck"] = false, 
+        ["TeamCheck"] = false, 
+        ["VehicleCheck"] = false, 
+        ["WallCheck"] = false, 
+        ["CheckIf_KO"] = true, 
+        ["UsingFactorCheck"] = false,
+    }, 
+    Scaling = {
+        ["UseScaling"] = false,
+        ["Transform"] = "PlayerPostion",
+    },
+    Properties = {
+        ["UseRangeCoefficient"] = false,
+        ["RangeCoefficient"] = 1,
+        ["PredictClose"] = false,
+        ["UseDetection"] = false,
+        ["UseCursorHitPart"] = false,
+        ["Intervals"] = 0.122,
+        ["Precision"] = 2,
+    },
+    Resolver = {
+        ["Enabled"] = true,
+        ["For"] = "Silent", 
+        ["Type"] = "Delta", -- MoveDirection
+        ["Threshold"] = 85, 
+        ["Tuning"] = 0.2, 
+
+        ["UseCustomResolver"] = false,
+        ["CustomResolver"] = false,
+        ["ResolverX"] = 0.1,
+        ["ResolverY"] = 0.1,
+        ["ResolverZ"] = 0.1,
+    },
+    Safety = {
+        ["LegitMode"] = false, -- blatant, legit, semilegit, semiblatant
+        ["Override"] = false,
+        ["OverrideAxis"] = false,
+        ["Y"] = 1,
+        ["X"] = 1,
+        ["Z"] = 1,
+        
+        ["UseCustomNoGroundShots"] = false,
+        ["NoGroundShots"] = false,
+        ["AmountOfNoGroundShots"] = 10, -- Max is 10
+
+        ["Use3dAngles"] = false,
+        ["3dAngles"] = "Angles",
+        ["AnglePower"] = 1, -- Power For Angle Basically
+
+        ["UsePredictionPoints"] = false,
+        ["PredictionPoints"] = 5, -- 
+        ["PointAdjustment"] = 0.1,
+
+        ["UseAirPoints"] = false,
+        ["AirPoints"] = 1,
+
+        ["CornerScale"] = nil,
+        ["UseCornerFactors"] = false,
+        ["ScaleFactors"] = 1,
+
+        ["UseVersionCheck"] = "Safe",
+        ["UseKeyBinds"] = false,
+        ["UseSafeFov"] = false,
+
+        ["VisibleTarget"] = true,
+        ["NearestCusor"] = false,
+
+    Global = {
+        ["UseChecks"] = true,
+        ["UseSafeMode"] = false,
+        ["FieldOfView"] = "Sticky",
+        ["SelfDetection"] = false,
+        ["UseGlobalAxis"] = false,
+
+        }
+    },
+}
+
+Bruh = {
+    ["Key"] = Enum.KeyCode.C,
+    ["Part"] = "Head",
+    ["PredictionY"] = 0.1255,
+    ["PredictionX"] = 0.1255,
+    ["Smoothing"] = 0.01,
+
+    ["AirPart"] = "Head",
+    ["UseAirPart"] = false,
+    ["BoundAdjustment"] = 2.50,
+    ["CheckIfJumped"] = false,
+    ["ShakeValue"] = 1, 
+
+    ["UseCustomShake"] = false,
+    ["ShakeY"] = 0.1,
+    ["ShakeX"] = 0.1,
+    ["ShakeZ"] = 0.1,
+
+    ["UseEasingStyle"] = false,
+    ["EasingStyleOut"] = "Elastic",
+    ["EasingStyleIn"] = "Linear",
+    ["UniversalY"] = false,
+    
+    ["AutoPrediction"] = 1, -- type of math
+    ["UseAutoPrediction"] = false,
+    ["MultiplyAutoPrediction"] = false,
+    ["Multiply"] = 2,
+
+    ["UseCustomResolver1"] = false, -- if u dont use this js use normal resolver.
+    ["CustomResolver1"] = false,
+    ["Resolver1X"] = 0.1,
+    ["Resolver1Y"] = 0.1,
+    ["Resolver1Z"] = 0.1,
+
+    ["UseTracer"] = false, -- only works on electron
+    ["Tracer"] = true, -- only works on electron
+    ["TracerColor"] = Color3.fromRGB(0, 0, 255), -- only works on electron
+    ["FreeForAllTracer"] = true, -- may cause lots of lag
+
+    ["UseStatic"] = false,
+    ["StaticY"] = 1.2,
+    ["StaticX"] = 1.2,
+    ["StaticZ"] = 1.2,
+}
+
+Global_Check = {
+    ["UseGlobal"] = false,
+    ["Ko_Check"] = false,
+    ["WallCheck"]= false,
+    ["VisibleCheck"] = false,
+    ["KillCheck"] = false,
+    ["StaticChecks"] = false,
+    ["UseDetection"] = false,
+    ["VehicleCheck"] = false,
+    ["CrewCheck"] = false,
+    ["TeamCheck"] = false,
+}
+
+Spin = {
+    ["Enabled"] = false,
+    ["RotationSpeed"] = 2500, 
+    ["UseDynamicSpeedSpin"] = false,
+    ["DynamicSpeedSpin"] = 0.1,
+    ["Keybind"] = Enum.KeyCode.V,
+    ["Math"] = 0.1,
+}
+
+DottedFOV = {
+    ["ShowDots"] = false,
+    ["Rainbow"] = false,
+    ["DotSize"] = 3,
+    ["Radius"] = 400,
+    ["Color"] = Color3.fromRGB(80, 50, 168),
+}
+
+hojixv3 = {
+    ["Settings"] = {
+        ["cframespeedtoggle"] = true,
+        ["KeyBind"] = "x",
+        ["speedvalue"] = 1,
+        ["DynamicSpeed"] = 1,
+        ["UseDynamicSpeed"] = false,
+    }
+}
+
+BruhImGeeked = { -- // Esp
+    ["Esp"] = {
+        ["Enabled"] = false, 
+        ["UseEspKeybind"] = true, 
+        ["UseTransparency"] = false,
+        ["EspKey"] = "l", 
+        ["HoldMode"] = false, 
+
+        ["Name"] = {
+            ["Enabled"] = false, 
+            ["OutLine"] = false, 
+            ["Color"] = Color3.fromRGB(255, 255, 255)
+        }, 
+
+        ["NameTransparency"] = 1,
+        ["UseOuter1"] = false,
+        ["OuterName"] = 0,
+        ["OuterNameTransparency"] = 0,
+
+        ["Box"] = {
+            ["Enabled"] = false, 
+            ["OutLine"] = false, 
+            ["Color"] = Color3.fromRGB(255, 255, 255)
+        }, 
+
+        ["BoxTransparency"] = 1,
+        ["BoundBox"] = false,
+        ["UseBoundBox"] = false,
+        ["BoundBoxTransparency"] = 1,
+
+        ["HealthBar"] = {
+            ["Enabled"] = false, 
+            ["OutLine"] = false, 
+            ["Color"] = Color3.fromRGB(0, 255, 0)
+        }, 
+
+        ["HealthTransparencyText"] = 1,
+        ["HealthText"] = {
+            ["Enabled"] = true, 
+            ["OutLine"] = false, 
+            ["Color"] = Color3.fromRGB(0, 255, 0)
+        },
+
+        ["HealthTransparency"] = 1,
+        
+        ["Distance"] = {
+            ["Enabled"] = false, 
+            ["OutLine"] = false, 
+            ["Color"] = Color3.fromRGB(255, 255, 255)
+        }, 
+
+        ["DistanceTransparency"] = 1,
+        ["UseOuter2"] = false,
+        ["OuterDistance"] = 0,
+        ["OuterDistanceTransparency"] = 0,
+    }
+}
+
+hojixvvv = {
+    ["Texture"] = {
+        ["Enabled"] = false,
+        ["Material"] = Enum.Material.Brick,  -- Assuming Material is an Enum
+        ["Color"] = Color3.fromRGB(255, 255, 255),
+    }
+}
+
+
+-- ALL FEATURES
+
+
+
+Kill Switch = {
+    ["Enabled"] = true, -- dtcs updates, then shuts down script
+    ["Protection"] = true, -- 
+    ["Bind"] = "V1"     
+    ["ResolverOnAlways"] = false,
+    ["UseSafeFoV"] = false, -- Should always be on
+}
+
+
+Silent = {
+    ["Enabled"] = true,
+    ["Prediction"] = 0.12,
+    ["UsePredX"] = false,
+    ["UsePredY"] = false,
+    ["PredX"] = 0.123,
+    ["PredY"] = 0.123, 
+    ["Keybind"] = "P",
+    ["WallCheck"] = false,
+    ["Visualize"] =
+    ["Part"] = "HumanoidRootPart",
+    ["HitPoint"] = false,
+    ["Nearest"] = true,
+    ["Resolver"] = false,
+    ["Resolver Tuning"] = 0.2,
+    ["Tracer"] = false,
+    ["Air Prediction"] = 0.123,
+    ["PredictMovement"] = false,
+    ["ShowMovement"] = false,
+    ["Factors"] = 1,
+    ["Notify"] = "P", 
+    ["UseCustomPrediction"] = false,
+    ["CustomPrediction"] = ["X"] = 0.11, ["Y"] = 0.11, ["Z"] = 0.11,
+
+    ["UseCustomResolver"] = false,
+    ["CustomResolver"] = false,
+    ["ResolverX"] = 0.1,
+    ["ResolverY"] = 0.1,
+    ["ResolverZ"] = 0.1,
+
+    ["UseFactors"] = false,
+    ["Factors"] = 1, -- 1, 2, 3,
+    ["FactorsX"] = 1, -- X Pred Factor
+    ["FactorsY"] = 1, -- Y Pred Factor
+    ["FactorsZ"] = 1, -- Z Pred Factor
+
+    ["UseAntiCurve"] = false,
+    ["AntiCurveValue"] = 1,
+    ["UseAxis"] = false,
+    ["AxisY"] = 1,
+    ["AxisX"] = 1,
+
+    ["AntiGroundShot"] = false,
+    ["UseAntiGroundShot"] = false,
+    ["AntiGroundShotValue"] = 5, -- Up to 10]
+
+    ["AutoPrediction"] = 1, -- type of math
+    ["UseAutoPrediction"] = false,
+    ["MultiplyAutoPrediction"] = false,
+    ["Multiply"] = 2, -- Multipliers
+    
+FieldOfView = {
+    ["FOV"] = true,
+    ["UseFOV"] = false,
+    ["Raduis"] = 100,
+    ["FovThickness"] = 2,
+    ["FovTransparency"] = 0.7,
+    ["FovColor"] = Color3.fromRGB(255, 255, 255),
+    ["Filled"] = false,
+    ["FillTransparency"] = 0.9,
+    ["Dotted"] = false,
+    ["ShowDots"] = false,
+    ["Rainbow"] = false,
+    ["DotSize"] = 2,
+    ["Radius"] = 150,
+    ["Color"] = Color3.fromRGB(255, 255, 255)
+
+SilentChecks = {
+    ["VisibleCheck"] = false, 
+    ["CrewCheck"] = false, 
+    ["FriendCheck"] = false, 
+    ["TeamCheck"] = false, 
+    ["VehicleCheck"] = false, 
+    ["WallCheck"] = false, 
+    ["CheckIf_KO"] = true, 
+    ["UsingFactorCheck"] = false,
+    ["StaticCheck"] = false,
+    },
+},
+
+Camlock = {
+    ["KeyBind"] = "C",
+    ["Prediction"] = 0.123,
+    ["UsePredX"] = false,
+    ["UsePredY"] = false,
+    ["PredX"] = 0.123,
+    ["PredY"] = 0.123, 
+    ["Part"] = "HumanoidRootPart",
+    ["SmoothingValue"] = 0.1,
+    ["Shake"] = 0, 
+    ["Offset"] = -2.50,
+    ["AirCheck"] = false
+    ["Resolver"] = true,
+    ["Resolver Tuning"] = 0.2,
+    ["UseCircleRadius"] = false,
+    ["UnlockOnTargetDeath"] = false,
+    ["UnlockOnOwnDeath"] = false,
+    ["UseRadius"] = false,
+    ["Air Smoothing"] = 0.1,
+    ["Air Prediction"] = 0.123,
+    ["Head Prediction"] = false,
+    ["UseCustomPrediction"] = false,
+    ["CustomPrediction"] = ["X"] = 0.11, ["Y"] = 0.11, ["Z"] = 0.11,
+
+    ["UseCustomResolver"] = false,
+    ["CustomResolver"] = false,
+    ["ResolverX"] = 0.1,
+    ["ResolverY"] = 0.1,
+    ["ResolverZ"] = 0.1,
+
+    ["UseCustomShake"] = false,
+    ["ShakeY"] = 0.1,
+    ["ShakeX"] = 0.1,
+    ["ShakeZ"] = 0.1,
+
+    ["AutoPrediction"] = 1, -- type of math
+    ["UseAutoPrediction"] = false,
+    ["MultiplyAutoPrediction"] = false,
+    ["Multiply"] = 2, -- Multipliers
+}
+FieldOfView = {
+    ["FOV"] = true,
+    ["Raduis"] = 100,
+    ["UseFOV"] = false,
+    ["FovThickness"] = 2,
+    ["FovTransparency"] = 0.7,
+    ["FovColor"] = Color3.fromRGB(255, 255, 255),
+    ["Filled"] = false,
+    ["FillTransparency"] = 0.9,
+    ["Dotted"] = false,
+    ["ShowDots"] = false,
+    ["Rainbow"] = false,
+    ["DotSize"] = 2,
+    ["Radius"] = 150,
+    ["Color"] = Color3.fromRGB(255, 255, 255)
+},
+
+TargetAim = {
+    ["KeyBind"] = "C",
+    ["Prediction"] = 0.137,
+    ["UsePredX"] = false,
+    ["UsePredY"] = false,
+    ["PredX"] = 0.1,
+    ["PredY"] = 0.1,
+    ["Parts"] = "Head", 
+    ["JumpPrediction"] = -2.50,
+    ["CheckIfJumped"] = false
+    ["Resolver Tuning"] = 0.2,
+    ["Smoothing"] = 0.10,
+    ["Tracer"] = false,
+    ["Highlight"] = false,
+    ["LookAt"] = false,
+    ["Stats"] = false,
+    ["Box"] = false, -- bugged on solara
+    ["UseCustomPrediction"] = false,
+    ["AimAt"] = false,
+    ["UseCustomPrediction"] = false,
+    ["CustomPrediction"] = ["X"] = 0.11, ["Y"] = 0.11, ["Z"] = 0.11,
+
+    ["UseStatic"] = false,
+    ["StaticY"] = 1.2,
+    ["StaticX"] = 1.2,
+    ["StaticZ"] = 1.2,
+
+    ["AutoPrediction"] = 1, -- type of math
+    ["UseAutoPrediction"] = false,
+    ["MultiplyAutoPrediction"] = false,
+    ["Multiply"] = 2, -- Multipliers
+
+    ["UseEasingStyle"] = false,
+    ["EasingStyleOut"] = "Elastic",
+    ["EasingStyleIn"] = "Linear",
+    ["UniversalY"] = false,
+Rage = {
+    ["KeyBind"] = "C",
+    ["Prediction"] = 0.137,
+    ["Target"] = false,
+    ["AirPart"] = "Head",
+    ["UseAirPart"] = false,
+    ["TargetStafe"] = false,
+    ["UseCustomPrediction"] = false,
+    ["CustomPrediction"] = ["X"] = 0.11, ["Y"] = 0.11, ["Z"] = 0.11,
+    ["HitSound"] = "" -- asset
+        
+    ["SpeedT"] = 10, -- speed
+    ["StrafeT"] = 10,
+    ["StrafeH"] = 10,
+    ["StrafeR"] = 10,
+    
+    ["Resolver"] = true,
+    ["ResolverTuning"]  = 0.3
+    ["ResolverMode"] = "Recalculate"  -- MoveDirection
+    ["ResolverX"] = false,
+    ["ResolverY"] = false,
+
+    ["UseCustomResolver"] = false,
+    ["CustomResolver"] = false,
+    ["ResolverX"] = 0.1,
+    ["ResolverY"] = 0.1,
+    ["ResolverZ"] = 0.1,
+
+    ["AutoPrediction"] = 1, -- type of math
+    ["UseAutoPrediction"] = false,
+    ["MultiplyAutoPrediction"] = false,
+    ["Multiply"] = 2, -- Multipliers
+
+    }, 
+}, 
+
+Visualize = {
+    ["ShowBonePart"] = false,
+    ["BonePartRadius"] = 8,
+    ["BonePartThickness"] = 2,
+    ["BonePartColor"] = Color3.fromRGB(255, 0, 0),
+    ["BonePartTransparency"] = 1,
+    ["BonePart"] = false,
+    ["Visualize Box"] = false,
+    ["Tracer"] = false,
+    ["SnapLinesUniversal"] = false,
+},
+
+Memory = {
+    ["MemSpoofer"] = true,
+    ["Start"] = 1137,
+    ["End"] = 1564,
+    ["Legit"] = "Mode" -- mode "blatant" "legit"
+},
+
+CheckBoth = {
+    ["AntiAimViewer"] = false,
+    ["DisableOnTargetDeath"] = true,
+    ["DisableOnPlayerDeath"] = true,
+    ["CheckIfKo"]= true,
+    ["ResolverKey"] = "H",
+    ["UseClosestPart"] = false,
+    ["Hide Game"] = false, 
+    ["Mode"] = "legit", --// legit blatant
+    ["VisualCheck"] = true,
+    ["LegitCheck"] = false,
+},
+
+Spin = {
+    ["Enabled"] = true,
+    ["Speed"] = 2500, 
+    ["Keybind"] = "C",
+    ["Multiply"] = 2,
+    ["UseMath"] = false,
+
+},
+
+BruhImGeeked = { -- // Esp
+    ["Esp"] = {
+        ["Enabled"] = false, 
+        ["UseEspKeybind"] = true, 
+        ["UseTransparency"] = false,
+        ["EspKey"] = "l", 
+        ["HoldMode"] = false, 
+
+        ["Name"] = {
+            ["Enabled"] = false, 
+            ["OutLine"] = false, 
+            ["Color"] = Color3.fromRGB(255, 255, 255)
+        }, 
+
+        ["NameTransparency"] = 1,
+        ["UseOuter1"] = false,
+        ["OuterName"] = 0,
+        ["OuterNameTransparency"] = 0,
+
+        ["Box"] = {
+            ["Enabled"] = false, 
+            ["OutLine"] = false, 
+            ["Color"] = Color3.fromRGB(255, 255, 255)
+        }, 
+
+        ["BoxTransparency"] = 1,
+        ["BoundBox"] = false,
+        ["UseBoundBox"] = false,
+        ["BoundBoxTransparency"] = 1,
+
+        ["HealthBar"] = {
+            ["Enabled"] = false, 
+            ["OutLine"] = false, 
+            ["Color"] = Color3.fromRGB(0, 255, 0)
+        }, 
+
+        ["HealthTransparencyText"] = 1,
+        ["HealthText"] = {
+            ["Enabled"] = true, 
+            ["OutLine"] = false, 
+            ["Color"] = Color3.fromRGB(0, 255, 0)
+        },
+
+        ["HealthTransparency"] = 1,
+        
+        ["Distance"] = {
+            ["Enabled"] = false, 
+            ["OutLine"] = false, 
+            ["Color"] = Color3.fromRGB(255, 255, 255)
+        }, 
+
+        ["DistanceTransparency"] = 1,
+        ["UseOuter2"] = false,
+        ["OuterDistance"] = 0,
+        ["OuterDistanceTransparency"] = 0,
+    }
+}
+
+Texture = {
+    ["Enabled"]= false,
+    ["Material"] = Enum.Material.Brick,
+    ["Color"] = Color3.fromRGB(255, 255, 255)
+        },
+    },
+},
+
+
+
+Cframe = {
+    ["Settings"] = {
+        ["cframespeedtoggle"] = true,
+        ["KeyBind"] = "x",
+        ["speedvalue"] = 1,
+        ["DynamicSpeed"] = 1,
+        ["UseDynamicSpeed"] = false,
+    }
+}
